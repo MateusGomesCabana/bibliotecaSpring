@@ -1,6 +1,8 @@
 package br.bliblioteca.livros.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -35,6 +38,9 @@ public class Livro implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "autor_id")
     private Autor autor;
+
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.MERGE)
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -68,17 +74,12 @@ public class Livro implements Serializable {
         this.autor = autor;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder builder = new StringBuilder()//
-                .append("Livro [")//
-                .append("id=")//
-                .append(id)//
-                .append(",nome=\"")//
-                .append(nome).append("\"")//
-                .append(",quantidadePaginas=")//
-                .append(quantidadePaginas)//
-                .append("]");
-        return builder.toString();
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
 }

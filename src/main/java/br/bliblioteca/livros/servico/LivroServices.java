@@ -5,6 +5,8 @@
  */
 package br.bliblioteca.livros.servico;
 
+
+import br.bliblioteca.livros.exception.LivroNotFoundException;
 import br.bliblioteca.livros.model.Livro;
 import br.bliblioteca.livros.repository.LivroRepository;
 import java.util.List;
@@ -33,7 +35,7 @@ public class LivroServices {
     }
 
     public Livro buscaLivro(Long id) {
-        return livroRepository.findById(id).orElseThrow(()->new RuntimeException());
+        return livroRepository.findById(id).orElseThrow(()->new LivroNotFoundException());
     }
     
     public void excluiLivro(Long id) {
