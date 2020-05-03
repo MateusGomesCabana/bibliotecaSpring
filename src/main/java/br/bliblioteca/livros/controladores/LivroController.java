@@ -41,7 +41,7 @@ public class LivroController {
 
     @GetMapping("/novo")
     public ModelAndView createForm(@ModelAttribute Livro livro) {
-        ModelAndView modelAndView = new ModelAndView("livros/form");
+        ModelAndView modelAndView = new ModelAndView("livros/formLivros");
         List<Autor> listaAutores = autorService.listaAutores();
         modelAndView.addObject("listaAutores", listaAutores);
         // modelAndView.addObject("livro", new Livro());

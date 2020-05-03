@@ -60,7 +60,9 @@ public class UserControllers {
 
     @GetMapping("/list")
     public ModelAndView list() {
-        return new ModelAndView("/user/list");
+        List<User> users = userService.findBasic();
+//        return new ModelAndView("/user/listadmin", "users", users);
+        return new ModelAndView("/user/list", "users", users);
     }
 
     @GetMapping("/listadmin")

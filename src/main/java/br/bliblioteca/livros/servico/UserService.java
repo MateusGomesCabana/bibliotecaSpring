@@ -11,5 +11,7 @@ public interface UserService {
     User findByUsername(String username);
 
     List<User> findAll();
+   
+    List<User> findBasic();
 
 }

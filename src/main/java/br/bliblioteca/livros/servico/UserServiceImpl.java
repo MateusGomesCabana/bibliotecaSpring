@@ -1,11 +1,10 @@
 package br.bliblioteca.livros.servico;
 
-
 import br.bliblioteca.livros.model.Role;
 import br.bliblioteca.livros.model.User;
 import br.bliblioteca.livros.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,5 +36,21 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public List<User> findBasic() {
+        List<User> user = userRepository.findAll();
+        List<User> userFinal = new ArrayList<>();
+        for (int i = 0; i < user.size(); i++) {
+            for (int j = 0; j < user.get(i).getRoles().size(); j++) {
+                if (user.get(i).getRoles().get(j).getRole() == "ROLE_BASIC") {
+                     userFinal.add(user.get(i));
+                     break;
+                }
+            }
+
+        }
+        return userFinal;
     }
 }

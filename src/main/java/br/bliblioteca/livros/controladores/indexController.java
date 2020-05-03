@@ -25,16 +25,19 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class indexController {
-     @Autowired
+
+    @Autowired
     LivroServices livroService;
-      @Autowired
+    @Autowired
     AutorServices autorService;
-   @GetMapping("/")
+
+    @GetMapping("/")
     public ModelAndView login() {
-      return new ModelAndView("index");
+        return new ModelAndView("login", "userForm", new User());
     }
+
     @GetMapping("/index")
     public ModelAndView index() {
-      return new ModelAndView("index");
+        return new ModelAndView("index");
     }
 }

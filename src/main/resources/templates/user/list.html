@@ -16,6 +16,19 @@
                     <li><a th:href="@{/user/logout}" href="#"> Logout </a></li>
                 </ul>
             </div>
+            <div>
+                <table>
+                    <tr>
+                        <td>Username</td>
+                        <td>Password</td>
+                    </tr>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.username}">Username</td>
+                        <td th:text="${user.password}">Password</td>
+                    </tr>
+
+                </table>
+            </div>
         </div>
     </body>
 </html>

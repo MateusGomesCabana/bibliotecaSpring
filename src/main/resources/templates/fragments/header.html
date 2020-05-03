@@ -7,10 +7,10 @@
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#" th:href="@{/index}">Home</a>
-                     <a class="navbar-brand" href="#" th:href="@{/livros/list}">Livros</a>
+                     <a sec:authorize="hasAuthority('ROLE_BASIC')"class="navbar-brand" href="#" th:href="@{/livros/list}">Livros</a>
                      <a sec:authorize="hasAuthority('ROLE_ADMIN')" class="navbar-brand" href="#" th:href="@{/autor/list}">Autores</a>
                      <a sec:authorize="hasAuthority('ROLE_ADMIN')" class="navbar-brand" href="#" th:href="@{/user/registration}">Cadastrar Usuario</a>
-                    <a sec:authorize="hasAuthority('ROLE_BASIC')" class="navbar-brand" href="#" th:href="@{/autores/list}">Alugar livro</a>
+<!--                    <a sec:authorize="hasAuthority('ROLE_ADMIN')" class="navbar-brand" href="#" th:href="@{/autores/list}">Alugar livro</a>-->
                      <a class="navbar-brand" href="#" th:href="@{/user/logout}" >Logout</a>
                 </div>
             </div>
