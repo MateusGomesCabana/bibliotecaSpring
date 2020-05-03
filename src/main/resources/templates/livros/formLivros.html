@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}" >
+    <head>
+        <title>Livros</title>
+    </head>
+    <body>
+        <div layout:fragment="content" th:remove="tag">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <ol class="breadcrumb panel-heading">
+                                <li><a href="">Livros</a></li>
+                                <li class="active">Adicionar</li>
+                            </ol>
+                            <div class="panel-body">
+
+                                <form method="post" action="#" th:action="@{/livros/gravar}" th:object="${livro}">
+                                        <input type="hidden" th:field="*{id}">
+                                    <div class="form-group">
+                                        <label for="name">Nome</label>
+                                        <input type="text" class="form-control" name="name" id="name" placeholder="Nome" th:field="*{nome}" >
+                                        <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error</span><br/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="name">Quantidade de paginas</label>
+                                        <input type="text" class="form-control" name="qtdepage" id="qtdepage" placeholder="Quatidade paginas" th:field="*{quantidadePaginas}" >
+                                        <span th:if="${#fields.hasErrors('quantidadePaginas')}" th:errors="*{quantidadePaginas}">Error</span>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label for="name">Autores</label>
+                                        <select th:field="*{autor}">
+                                            <option value="">Selecione o Autor</option>
+                                            <option th:each="autor : ${listaAutores}" th:value="${autor.id}" th:utext="${autor.nome} " selected="selected"></option>
+                                        </select>
+
+                                        <br />
+                                        <br />
+
+                                        <button type="submit" class="btn btn-primary">Salvar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

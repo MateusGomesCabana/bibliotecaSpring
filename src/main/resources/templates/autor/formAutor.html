@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <div layout:fragment="content" th:remove="tag">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <ol class="breadcrumb panel-heading">
+                                <li><a href="">Livros</a></li>
+                                <li class="active">Adicionar</li>
+                            </ol>
+                            <div class="panel-body">
+                               
+                                <form method="post" action="#" th:action="@{/autor/gravar}" th:object="${autor}">
+                                     <input type="hidden" th:field="*{id}">
+                                    <div class="form-group">
+                                        <label for="name">Nome</label>
+                                        <input type="text"  th:field="*{nome}" class="form-control" name="name" id="name" placeholder="Nome">
+                                         <span  th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}">Error</span><br/>
+                                    </div>
+                                   
+                                    <br />
+                                    <button type="submit" class="btn btn-primary">Salvar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

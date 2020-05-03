@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+    <head>
+        <title>Login</title>
+    </head>
+    <body>
+        <div layout:fragment="content" th:remove="tag">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <ol class="breadcrumb panel-heading">
+                                <li class="active">Autor</li>
+                            </ol>
+                            <div class="panel-body">
+                               <a href="#" th:href="@{/autor/novo}">Novo</a>
+
+                                <br>
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>ID DO AUTOR</th>
+                                            <th>NOME</th>
+                                            <th>AÇÃO</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="autor :${autores}">
+                                            <td th:text="${autor.id}">id do livro</td>
+                                            <td th:text="${autor?.nome}">nome do livro</td>
+                                            <td><a href="#" th:href="@{'/autor/alterar/'+${autor.id}}">Alterar</a>
+                                            <a href="#" th:href="@{'/autor/excluir/'+${autor.id}}">Excluir</a>
+                                            </td>
+                                            
+                                        </tr>
+                                      
+                                        <!--                                        <tr>
+                                                                                    <th scope="row" class="text-center"></th>
+                                                                                    <td></td>
+                                                                                    <td class="text-justify"></td>
+                                                                                    <td></td>
+                                                                                    <td width="155" class="text-center">
+                                                                                        <a href="" class="btn btn-default btn-sm"><i class="glyphicon glyphicon-pencil"></i>Editar</a>
+                                                                                        <a href="" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i>Excluir</a>
+                                                                                    </td>
+                                                                                </tr>-->
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

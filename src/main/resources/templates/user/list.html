@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{fragments/layout}">
+    <head>
+        <title>Index</title>
+    </head>
+    <body>
+        <div layout:fragment="content" th:remove="tag">
+            <h1>Lista Basica</h1>
+            <h2>Acesso Liberado <span sec:authentication="name"></span></h2>
+            <div>
+                <ul>
+                    <li sec:authorize="hasAuthority('ROLE_ADMIN')"><a th:href="@{/user/list}" href="#"> Lista Basica </a></li>
+                    <li sec:authorize="hasAuthority('ROLE_ADMIN')"><a th:href="@{/user/listadmin}" href="#"> Lista Admin </a></li>
+                    <li><a th:href="@{/user/logout}" href="#"> Logout </a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

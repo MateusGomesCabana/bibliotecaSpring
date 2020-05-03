@@ -31,7 +31,8 @@ public class LivroController {
 
     @GetMapping("/list")
     public ModelAndView livros() {
-        ModelAndView modelAndView = new ModelAndView("livros/list");
+//        ModelAndView modelAndView = new ModelAndView("livros/list");
+        ModelAndView modelAndView = new ModelAndView("livros/livros");
         List<Livro> listaLivros = livroService.listarTodosLivros();
 
         modelAndView.addObject("livros", listaLivros);
@@ -51,7 +52,7 @@ public class LivroController {
     public ModelAndView create(@Valid Livro livro, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             List<Autor> listaAutores = autorService.listaAutores();
-            return new ModelAndView("livros/form", "listaAutores", listaAutores);
+            return new ModelAndView("livros/formLivros", "listaAutores", listaAutores);
         }
 
         livroService.salvarLivro(livro);
@@ -63,7 +64,7 @@ public class LivroController {
         Livro livro = livroService.buscaLivro(id);
         List<Autor> listaAutores = autorService.listaAutores();
 
-        ModelAndView modelAndView = new ModelAndView("livros/form");
+        ModelAndView modelAndView = new ModelAndView("livros/formLivros");
         modelAndView.addObject("listaAutores", listaAutores);
         modelAndView.addObject("livro", livro);
         return modelAndView;

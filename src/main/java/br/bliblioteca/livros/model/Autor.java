@@ -25,7 +25,7 @@ public class Autor implements Serializable {
     @NotBlank
     private String nome;
 
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL)
     private List<Livro> livros = new ArrayList<>();
 
     public Long getId() {
